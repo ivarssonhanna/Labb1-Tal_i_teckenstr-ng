@@ -4,33 +4,31 @@ using System.Data.Common;
 
 Console.WriteLine("Skriv in en sträng: ");
 string input = Console.ReadLine();
-
-string substringTal = "";
-long sum = 0;                                       // deklarerar en variabel att spara summan i till senare
+string substringNumber = "";
+long sum = 0;                                      
 
 for (int i = 0; i < input.Length; i++)
 {
-    if (char.IsDigit(input[i]))                     // kontrollerar att i är en siffra
+    if (char.IsDigit(input[i]))                   
     {
         for (int j = i + 1; j < input.Length; j++)
         {
-            if (!char.IsDigit(input[j]))            // OM tecknet inte är en siffra går den ur loopen 
+            if (!char.IsDigit(input[j]))         
                 break;
 
-            if (input[i] == input[j])               // OM input[i] och input[j] har samma värde blir det en match
+            if (input[i] == input[j])              
             {
                 Console.WriteLine();
-                int delSträngLängd = j - i + 1;
+                int subStrLength = j - i + 1;
                 Console.Write(input.Substring(0,i));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(input.Substring(i,delSträngLängd));
+                Console.Write(input.Substring(i,subStrLength));
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(input.Substring(j + 1));
 
-                substringTal = input.Substring(i, j - i + 1);
-                long resultat;
-                long.TryParse(substringTal, out resultat);
-                sum += resultat;
+                substringNumber = input.Substring(i, subStrLength);
+                long.TryParse(substringNumber, out long numberSum);
+                sum += numberSum;
                 break;
             }
         }
